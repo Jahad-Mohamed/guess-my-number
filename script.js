@@ -1,8 +1,7 @@
 "use strict";
 
 // Generate randon number 1 - 20
-const secretNumber = Math.floor(Math.random() * 20) + 1;
-document.querySelector(".number").textContent = secretNumber;
+let secretNumber = Math.floor(Math.random() * 20) + 1;
 
 //Score
 let score = 20;
@@ -20,6 +19,7 @@ document.querySelector(".check").addEventListener("click", function () {
   } else if (guess === secretNumber) {
     document.querySelector(".message").textContent =
       "🎊 Congratulations you have guessed my number! 🎊";
+    document.querySelector(".number").textContent = secretNumber;
 
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").style.width = "30rem";
@@ -45,3 +45,25 @@ document.querySelector(".check").addEventListener("click", function () {
       " ❌ YOU HAVE LOST THE GAME! ";
   }
 });
+
+// Coding Challenge #1
+// Implement a game rest functionality, so that the player can make a new guess!
+// Your tasks:
+// 1. Select the element with the 'again' class and attach a click event handler
+
+document.querySelector(".again").addEventListener("click", function () {
+  score = 20;
+  secretNumber = Math.floor(Math.random() * 20) + 1;
+
+  document.querySelector(".message").textContent = "Start guessing...";
+  document.querySelector(".number").textContent = "?";
+  document.querySelector(".score").textContent = score;
+  document.querySelector(".guess").value = "";
+  document.querySelector("body").style.backgroundColor = "rgb(11, 2, 70)";
+  document.querySelector(".number").style.width = "15rem";
+});
+// 2. In the handler function , restore initial values of the 'score' and
+// 'secretNumber' variables
+// 3. Restore the initial conditions of the message, number, score and guess input fields
+// 4. Also restore the original background color(#222) and number width(15rem)
+// GOOD LUCK 😀

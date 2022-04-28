@@ -106,7 +106,8 @@ h1 {
 }
 
 .btn:hover {
-  background-color: #ccc;
+  background-color: rgb(23, 29, 33);
+  color: white;
 }
 
 .message {

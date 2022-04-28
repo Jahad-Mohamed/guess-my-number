@@ -5,6 +5,7 @@ let secretNumber = Math.floor(Math.random() * 20) + 1;
 
 //Score
 let score = 20;
+let highScore = 0;
 
 //Event Handler
 document.querySelector(".check").addEventListener("click", function () {
@@ -15,7 +16,7 @@ document.querySelector(".check").addEventListener("click", function () {
   if (!guess) {
     document.querySelector(".message").textContent = "⛔️ Input a number!";
 
-    // When player guesses the number
+    // When player wins
   } else if (guess === secretNumber) {
     document.querySelector(".message").textContent =
       "🎊 Congratulations you have guessed my number! 🎊";
@@ -23,6 +24,12 @@ document.querySelector(".check").addEventListener("click", function () {
 
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").style.width = "30rem";
+
+    if (score > highScore) {
+      highScore = score;
+    }
+
+    document.querySelector(".highscore").textContent = highScore;
 
     // When  guess is too high
   } else if (guess > secretNumber) {
@@ -46,24 +53,13 @@ document.querySelector(".check").addEventListener("click", function () {
   }
 });
 
-// Coding Challenge #1
-// Implement a game rest functionality, so that the player can make a new guess!
-// Your tasks:
-// 1. Select the element with the 'again' class and attach a click event handler
-
+// Reset game (again btn)
 document.querySelector(".again").addEventListener("click", function () {
   score = 20;
   secretNumber = Math.floor(Math.random() * 20) + 1;
-
   document.querySelector(".message").textContent = "Start guessing...";
   document.querySelector(".number").textContent = "?";
-  document.querySelector(".score").textContent = score;
-  document.querySelector(".guess").value = "";
+  document.querySelector(".guess").value = null;
   document.querySelector("body").style.backgroundColor = "rgb(11, 2, 70)";
   document.querySelector(".number").style.width = "15rem";
 });
-// 2. In the handler function , restore initial values of the 'score' and
-// 'secretNumber' variables
-// 3. Restore the initial conditions of the message, number, score and guess input fields
-// 4. Also restore the original background color(#222) and number width(15rem)
-// GOOD LUCK 😀
